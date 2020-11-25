@@ -95,6 +95,66 @@ def boost_library(
         licenses = ["notice"],
     )
 
+def boost_headers_library(
+        name,
+        boost_name = None,
+        defines = None,
+        local_defines = None,
+        includes = None,
+        hdrs = None,
+        srcs = None,
+        deps = None,
+        copts = None,
+        exclude_src = [],
+        exclude_hdr = [],
+        linkopts = None,
+        linkstatic = None,
+        visibility = ["//visibility:public"]):
+    if boost_name == None:
+        boost_name = name
+
+    if defines == None:
+        defines = []
+
+    if local_defines == None:
+        local_defines = []
+
+    if includes == None:
+        includes = []
+
+    if hdrs == None:
+        hdrs = []
+
+    if srcs == None:
+        srcs = []
+
+    if deps == None:
+        deps = []
+
+    if copts == None:
+        copts = []
+
+    if linkopts == None:
+        linkopts = []
+
+    return native.cc_library(
+        name = name,
+        visibility = visibility,
+        defines = default_defines + defines,
+        includes = ["."] + includes,
+        local_defines = local_defines,
+        srcs = native.glob([
+             "boost/*.hpp",
+             "boost/**/*.hpp",
+             "boost/**/**/*.hpp",
+        ]),
+        deps = deps,
+        copts = default_copts + copts,
+        linkopts = linkopts,
+        linkstatic = linkstatic,
+        licenses = ["notice"],
+    )
+
 # Some boost libraries are not safe to use as dynamic libraries unless a
 # BOOST_*_DYN_LINK define is set when they are compiled and included, notably
 # Boost.Test. When the define is set, the libraries are not safe to use

@@ -563,16 +563,8 @@ boost_library(
     ],
 )
 
-boost_library(
-    name = "convert",
-    hdrs = [
-    ],
-    deps = [
-        ":assert",
-        ":config",
-        ":fusion",
-        ":throw_exception",
-    ],
+boost_headers_library(
+    name = "headers"
 )
 
 boost_library(
