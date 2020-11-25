@@ -547,11 +547,13 @@ boost_library(
 )
 
 boost_library(
-    name = "convert",
+    name = "conversion",
     hdrs = [
-        "boost/convert.hpp",
-        "boost/convert/*.hpp",
-        "boost/convert/**/*.hpp",
+        "boost/cast.hpp",
+        "boost/implicit_cast.hpp",
+        "boost/lexical_cast.hpp",
+        "boost/polymorphic_cast.hpp",
+        "boost/polymorphic_pointer_cast.hpp",
     ],
     deps = [
         ":assert",
@@ -562,13 +564,8 @@ boost_library(
 )
 
 boost_library(
-    name = "conversion",
+    name = "convert",
     hdrs = [
-        "boost/cast.hpp",
-        "boost/implicit_cast.hpp",
-        "boost/lexical_cast.hpp",
-        "boost/polymorphic_cast.hpp",
-        "boost/polymorphic_pointer_cast.hpp",
     ],
     deps = [
         ":assert",
