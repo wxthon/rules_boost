@@ -547,6 +547,21 @@ boost_library(
 )
 
 boost_library(
+    name = "convert",
+    hdrs = [
+        "boost/convert.hpp",
+        "boost/convert/*.hpp",
+        "boost/convert/**/*.hpp",
+    ],
+    deps = [
+        ":assert",
+        ":config",
+        ":fusion",
+        ":throw_exception",
+    ],
+)
+
+boost_library(
     name = "conversion",
     hdrs = [
         "boost/cast.hpp",
