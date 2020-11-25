@@ -1,6 +1,6 @@
 load("@bazel_skylib//rules:copy_file.bzl", "copy_file")
 load("@bazel_skylib//lib:selects.bzl", "selects")
-load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_library", "boost_so_library", "hdr_list")
+load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_library", "boost_so_library", "hdr_list", "boost_headers_library")
 
 _w_no_deprecated = selects.with_or({
     (":linux", ":osx"): [
